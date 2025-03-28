@@ -1,32 +1,78 @@
 import React from 'react';
-import Layout from '@theme/Layout';
+import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
 import styles from './index.module.css';
+
+// 网站配置数据
+const homeConfig = {
+  // Hero区域配置
+  hero: {
+    title: '个人技术博客',
+    subtitle: '全栈工程师 | 8年开发经验 | 技术分享',
+    description: '分享全栈开发技术，包括前端、后端、DevOps、架构设计等领域的实践经验',
+    buttons: [
+      {
+        text: '开始阅读',
+        link: '/docs/intro',
+        type: 'primary',
+      },
+      {
+        text: '关于我',
+        link: '/about',
+        type: 'secondary',
+      },
+    ],
+  },
+  // 背景配置
+  background: {
+    nodeCount: 20, // 网络节点数量
+  },
+};
+
+function NetworkBackground() {
+  return (
+    <div className={styles.particlesContainer}>
+      <div className={styles.particles}>
+        {Array.from({ length: homeConfig.background.nodeCount }).map((_, index) => (
+          <div key={index} className={styles.particle} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function HomepageHeader() {
+  return (
+    <header className={styles.heroBanner}>
+      <NetworkBackground />
+      <div className={styles.heroContent}>
+        <h1 className={styles.heroTitle}>{homeConfig.hero.title}</h1>
+        <p className={styles.heroSubtitle}>{homeConfig.hero.subtitle}</p>
+        <p className={styles.heroDescription}>{homeConfig.hero.description}</p>
+        <div className={styles.buttons}>
+          {homeConfig.hero.buttons.map((button, index) => (
+            <Link
+              key={index}
+              className={clsx(styles.heroButton, 'button', button.type === 'primary' ? 'button--primary' : '')}
+              to={button.link}>
+              {button.text}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </header>
+  );
+}
 
 export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
-  
   return (
     <Layout
-      title={siteConfig.title}
-      description={siteConfig.tagline}>
-      <main className={styles.main}>
-        <div className={styles.container}>
-          <h1>{siteConfig.title}</h1>
-          <p>{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
-            <a className="button button--primary button--lg" href="/tech/intro">
-              技术文档
-            </a>
-            <a className="button button--secondary button--lg" href="/interview/intro">
-              面试资料
-            </a>
-            <a className="button button--info button--lg" href="/resume/resume-intro">
-              个人简历
-            </a>
-          </div>
-        </div>
-      </main>
+      title="个人技术博客"
+      description="全栈工程师 | 技术分享">
+      <HomepageHeader />
     </Layout>
   );
-} 
+}

@@ -147,7 +147,7 @@
   overflow: hidden;
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: white;
-  min-height: 80vh;
+  min-height: 400px;
   display: flex;
   align-items: center;
 }

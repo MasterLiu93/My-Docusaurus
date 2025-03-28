@@ -118,7 +118,7 @@ function HomepageHeader() {
       <ParticlesBackground />
       <div className="container">
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>刘佳兴的技术博客</h1>
+          <h1 className={styles.heroTitle}>个人技术博客</h1>
           <p className={styles.heroSubtitle}>
             全栈工程师 | 8年开发经验 | 技术分享
           </p>
@@ -250,4 +250,4 @@ export default function Home() {
       </main>
     </Layout>
   );
-} 
+}
