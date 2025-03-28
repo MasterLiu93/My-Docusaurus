@@ -1,4 +1,10 @@
-// @ts-check
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -20,6 +26,12 @@ const config = {
     locales: ['zh-Hans'],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: ['@docusaurus/theme-mermaid'],
+
   presets: [
     [
       'classic',
@@ -38,7 +50,7 @@ const config = {
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+  /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
         title: '个人技术博客',
@@ -107,4 +119,4 @@ const config = {
     }),
 };
 
-module.exports = config; 
+module.exports = config;
